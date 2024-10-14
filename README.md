@@ -1,4 +1,4 @@
-### Next App
+### Next App with Next.js 14+, Typescript, Clerk Auth, Prisma, Supabase, Tailwind, Shadcn-ui, Zod,Vercel and etc
 
 ```sh
 
