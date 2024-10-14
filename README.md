@@ -2,7 +2,7 @@
 
 ```sh
 
-npx create-next-app@latest home-away
+npx create-next-app@latest uz-trip
 ```
 
 ```sh
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 - reviews
 
 - new file - pageName/page.tsx
-
+ 
 ```tsx
 function BookingsPage() {
   return <h1 className='text-3xl'>BookingsPage</h1>;
@@ -1568,7 +1568,7 @@ utils/supabase.ts
 ```ts
 import { createClient } from '@supabase/supabase-js';
 
-const bucket = 'home-away-draft';
+const bucket = 'uz-trip-draft';
 
 // Create a single supabase client for interacting with your database
 export const supabase = createClient(
