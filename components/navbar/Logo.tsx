@@ -13,3 +13,7 @@ function Logo() {
 }
 
 export default Logo;
+
+export function AnotherComponent() {
+  return <div>Another Component</div>;
+}
