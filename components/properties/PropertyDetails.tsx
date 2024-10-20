@@ -9,7 +9,7 @@ type PropertyDetailsProps = {
   };
 };
 
-function PropertyDetauls({
+function PropertyDetails({
   details: { bedrooms, baths, guests, beds },
 }: PropertyDetailsProps) {
   return (
@@ -22,4 +22,4 @@ function PropertyDetauls({
   );
 }
 
-export default PropertyDetauls;
+export default PropertyDetails;
