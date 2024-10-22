@@ -282,8 +282,25 @@ export const createReviewAction = async (
   }
 };
 
-export const fetchPropertyReviews = async () => {
-  return { message: "fetch reviews" };
+export const fetchPropertyReviews = async (propertyId: string) => {
+  const reviews = await db.review.findMany({
+    where: { propertyId },
+    select: {
+      id: true,
+      rating: true,
+      comment: true,
+      profile: {
+        select: {
+          firstName: true,
+          profileImage: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+  return reviews;
 };
 
 export const fetchPropertyReviewsByUser = async () => {
