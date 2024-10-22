@@ -25,7 +25,7 @@ export default HomePage;
 
 ```tsx
 export const metadata: Metadata = {
-  title: "HomeAway",
+  title: "Trip-uz",
   description: "Feel at home, away from home.",
 };
 ```
