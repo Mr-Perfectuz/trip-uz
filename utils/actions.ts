@@ -4,6 +4,7 @@ import db from "./db";
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import {
+  createReviewSchema,
   ImageSchema,
   profileSchema,
   propertySchema,
@@ -11,6 +12,7 @@ import {
 } from "./schemas";
 import { revalidatePath } from "next/cache";
 import { uploadImage } from "./superbase";
+import { error } from "console";
 
 const getAuthUser = async () => {
   const user = await currentUser();
@@ -258,4 +260,82 @@ export const fetchPropertyDetails = (id: string) => {
       profile: true,
     },
   });
+};
+
+export const createReviewAction = async (
+  prevState: any,
+  formData: FormData
+) => {
+  const user = await getAuthUser();
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validatedWithZodSchema(createReviewSchema, rawData);
+    await db.review.create({
+      data: {
+        ...validatedFields,
+        profileId: user.id,
+      },
+    });
+    revalidatePath(`/properties/${validatedFields.propertyId}`);
+    return { message: "Review submitted scucessfully " };
+  } catch (err) {
+    return renderError(err);
+  }
+};
+
+export const fetchPropertyReviews = async (propertyId: string) => {
+  const reviews = await db.review.findMany({
+    where: { propertyId },
+    select: {
+      id: true,
+      rating: true,
+      comment: true,
+      profile: {
+        select: {
+          firstName: true,
+          profileImage: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+  return reviews;
+};
+export const fetchPropertyReviewsByUser = async () => {
+  const user = await getAuthUser();
+  const reviews = await db.review.findMany({
+    where: {
+      profileId: user.id,
+    },
+    select: {
+      id: true,
+      rating: true,
+      comment: true,
+      property: {
+        select: {
+          name: true,
+          image: true,
+        },
+      },
+    },
+  });
+  return reviews;
+};
+
+export const deleteReviewAction = async (prevState: { reviewId: string }) => {
+  const { reviewId } = prevState;
+  const user = await getAuthUser();
+  try {
+    await db.review.delete({
+      where: {
+        id: reviewId,
+        profileId: user.id,
+      },
+    });
+    revalidatePath("/reviews");
+    return { message: "Review deleted successfully " };
+  } catch (error) {}
+  return renderError(error);
 };

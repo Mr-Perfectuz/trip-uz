@@ -17,7 +17,7 @@ function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
         id={name}
         name={name}
         defaultValue={defaultValue || tempDefaultDescription}
-        rows={8}
+        rows={5}
         required
         className="loading-loose"
       ></Textarea>
