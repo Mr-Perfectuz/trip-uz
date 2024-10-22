@@ -258,6 +258,12 @@ export const fetchPropertyDetails = (id: string) => {
     },
     include: {
       profile: true,
+      booking: {
+        select: {
+          checkIn: true,
+          checkOut: true,
+        },
+      },
     },
   });
 };
