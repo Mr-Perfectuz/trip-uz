@@ -13,7 +13,20 @@ import {
 } from "@/utils/calendar";
 
 function BookingCalendar() {
-  return <div>BookingCalendar</div>;
+  const currentDate = new Date();
+  const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
+  useEffect(() => {
+    useProperty.setState({ range });
+  }, [range]);
+  return (
+    <Calendar
+      mode="range"
+      defaultMonth={currentDate}
+      onSelect={setRange}
+      selected={range}
+      className="mb-4"
+    />
+  );
 }
 
 export default BookingCalendar;
