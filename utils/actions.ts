@@ -12,7 +12,7 @@ import {
 } from "./schemas";
 import { revalidatePath } from "next/cache";
 import { uploadImage } from "./superbase";
-import { error } from "console";
+import { count, error } from "console";
 
 const getAuthUser = async () => {
   const user = await currentUser();
@@ -339,3 +339,22 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
   } catch (error) {}
   return renderError(error);
 };
+
+export async function fetchPropertyRating(propertyId: string) {
+  const result = await db.review.groupBy({
+    by: ["propertyId"],
+    _avg: {
+      rating: true,
+    },
+    _count: {
+      rating: true,
+    },
+    where: {
+      propertyId,
+    },
+  });
+  return {
+    rating: result[0]?._avg.rating?.toFixed() ?? 0,
+    count: result[0]?._avg.rating ?? 0,
+  };
+}
