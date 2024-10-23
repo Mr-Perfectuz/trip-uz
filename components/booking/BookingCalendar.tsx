@@ -15,12 +15,26 @@ function BookingCalendar() {
   const currentDate = new Date();
   const [range, setRange] = useState<DateRange | undefined>(defaultSelected);
   const bookings = useProperty((state) => state.bookings);
-
+  const { toast } = useToast();
   const blockedPeriods = generateBlockedPeriods({
     bookings,
     today: currentDate,
   });
+  const unaviableDates = generateDisabledDates(blockedPeriods);
+  console.log("unaviableDates:", unaviableDates);
   useEffect(() => {
+    const selectedRange = generateDateRange(range);
+    const isDisabledDateIncluded = selectedRange.some((date) => {
+      if (unaviableDates[date]) {
+        setRange(defaultSelected);
+        toast({
+          description: "The dates are fully booked. Please select again !",
+        });
+        return true;
+      }
+      return false;
+    });
+
     useProperty.setState({ range });
   }, [range]);
   return (
