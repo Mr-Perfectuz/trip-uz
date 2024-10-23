@@ -49,7 +49,7 @@ async function BookingsPage() {
                 <TableCell>
                   <Link
                     href={`/properties/${propertyId}`}
-                    className=" text-muted-foreground tracking-wide"
+                    className="tracking-wide "
                   >
                     {name}
                   </Link>
