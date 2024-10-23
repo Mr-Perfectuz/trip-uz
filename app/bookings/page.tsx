@@ -19,13 +19,14 @@ import { fetchBookings, deleteBookingAction } from "@/utils/actions";
 
 async function BookingsPage() {
   const bookings = await fetchBookings();
-  if (bookings.length === 0) return <EmptyList />;
-
+  if (bookings.length === 0) {
+    return <EmptyList />;
+  }
   return (
     <div className="mt-16">
-      <h4 className="mb-4 capitalize">total bookings: {bookings.length}</h4>
+      <h4 className="mb-4 capitalize">total bookings : {bookings.length}</h4>
       <Table>
-        <TableCaption>A list of your recent bookings</TableCaption>
+        <TableCaption>A list of your recent bookings.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Property Name</TableHead>
@@ -34,32 +35,51 @@ async function BookingsPage() {
             <TableHead>Total</TableHead>
             <TableHead>Check In</TableHead>
             <TableHead>Check Out</TableHead>
-            <TableHead>Action</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
-        <TableHeader>
-          <TableBody>
-            {bookings.map((booking) => {
-              const { id, orderTotal, totalNights, checkIn, checkOut } =
-                booking;
-              const { id: propertyId, name, country } = booking.property;
-              const startDate = formatDate(checkIn);
-              const endDate = formatDate(checkOut);
-              return (
-                <TableRow key={id}>
-                  <TableCell>
-                    <Link
-                      href={`/properties/${propertyId}`}
-                      className="underline text-muted-foreground tracking-wide"
-                    ></Link>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </TableHeader>
+        <TableBody>
+          {bookings.map((booking) => {
+            const { id, orderTotal, totalNights, checkIn, checkOut } = booking;
+            const { id: propertyId, name, country } = booking.property;
+            const startDate = formatDate(checkIn);
+            const endDate = formatDate(checkOut);
+            return (
+              <TableRow key={id}>
+                <TableCell>
+                  <Link
+                    href={`/properties/${propertyId}`}
+                    className=" text-muted-foreground tracking-wide"
+                  >
+                    {name}
+                  </Link>
+                </TableCell>
+                <TableCell>
+                  <CountryFlagAndName countryCode={country} />
+                </TableCell>
+                <TableCell>{totalNights}</TableCell>
+                <TableCell>{formatCurrency(orderTotal)}</TableCell>
+                <TableCell>{startDate}</TableCell>
+                <TableCell>{endDate}</TableCell>
+                <TableCell>
+                  <DeleteBooking bookingId={id} />
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
       </Table>
     </div>
   );
 }
+
+function DeleteBooking({ bookingId }: { bookingId: string }) {
+  const deleteBooking = deleteBookingAction.bind(null, { bookingId });
+  return (
+    <FormContainer action={deleteBooking}>
+      <IconButton actionType="delete" />
+    </FormContainer>
+  );
+}
+
 export default BookingsPage;
