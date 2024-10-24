@@ -5321,7 +5321,7 @@ export const updatePropertyImageAction = async () => {
 import {
   fetchRentalDetails,
   updatePropertyImageAction,
-  updatePropertyAction,
+  updatePropertyaction,
 } from "@/utils/actions";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";

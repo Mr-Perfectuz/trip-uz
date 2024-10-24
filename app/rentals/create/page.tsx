@@ -3,7 +3,7 @@ import FormContainer from "@/components/form/FormContainer";
 import { createPropertyAction } from "@/utils/actions";
 import { SubmitButton } from "@/components/form/Buttons";
 import PriceInput from "@/components/form/PriceInput";
-import CategoriesInput from "@/components/form/Categories";
+import CategoriesInput from "@/components/form/CategoriesInput";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import CountriesInput from "@/components/form/CountriesInput";
 import ImageInput from "@/components/form/ImageInput";
