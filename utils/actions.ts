@@ -1,40 +1,40 @@
-"use server";
+'use server';
 
-import db from "./db";
-import { clerkClient, currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import db from './db';
+import { clerkClient, currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 import {
   createReviewSchema,
   ImageSchema,
   profileSchema,
   propertySchema,
   validatedWithZodSchema,
-} from "./schemas";
-import { revalidatePath } from "next/cache";
-import { uploadImage } from "./superbase";
-import { count, error } from "console";
-import { calculateTotals } from "./calculateTotals";
-import { formatDate } from "./format";
+} from './schemas';
+import { revalidatePath } from 'next/cache';
+import { uploadImage } from './superbase';
+import { count, error } from 'console';
+import { calculateTotals } from './calculateTotals';
+import { formatDate } from './format';
 
 const getAuthUser = async () => {
   const user = await currentUser();
   if (!user) {
-    throw new Error("Please login first !");
+    throw new Error('Please login first !');
   }
-  if (!user.privateMetadata.hasProfile) redirect("/profile/create");
+  if (!user.privateMetadata.hasProfile) redirect('/profile/create');
   return user;
 };
 
 const getAdminUser = async () => {
   const user = await getAuthUser();
-  if (user.id !== process.env.ADMIN_USER_ID) redirect("/");
+  if (user.id !== process.env.ADMIN_USER_ID) redirect('/');
   return user;
 };
 
 const renderError = (error: unknown): { message: string } => {
   console.log(error);
   return {
-    message: error instanceof Error ? error.message : "An error occurred",
+    message: error instanceof Error ? error.message : 'An error occurred',
   };
 };
 
@@ -44,14 +44,14 @@ export const createProfileAction = async (
 ) => {
   try {
     const user = await currentUser();
-    if (!user) throw new Error("Please login to create a profile");
+    if (!user) throw new Error('Please login to create a profile');
     const rawData = Object.fromEntries(formData);
     const validatedFields = validatedWithZodSchema(profileSchema, rawData);
     await db.profile.create({
       data: {
         clerkId: user.id,
         email: user.emailAddresses[0].emailAddress,
-        profileImage: user.imageUrl ?? "",
+        profileImage: user.imageUrl ?? '',
         ...validatedFields,
       },
     });
@@ -64,7 +64,7 @@ export const createProfileAction = async (
     console.log(error);
     return renderError(error);
   }
-  redirect("/");
+  redirect('/');
 };
 
 export const fetchProfileImage = async () => {
@@ -90,7 +90,7 @@ export const fetchProfile = async () => {
       clerkId: user.id,
     },
   });
-  if (!profile) redirect("/profile/create");
+  if (!profile) redirect('/profile/create');
   return profile;
 };
 
@@ -106,8 +106,8 @@ export const updateProfileAction = async (
       where: { clerkId: user.id },
       data: validatedFields,
     });
-    revalidatePath("/profile");
-    return { message: "Profile has been updated ! " };
+    revalidatePath('/profile');
+    return { message: 'Profile has been updated ! ' };
   } catch (error) {
     return renderError(error);
   }
@@ -119,7 +119,7 @@ export const updateProfileImageAction = async (
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
   try {
-    const image = formData.get("image") as File;
+    const image = formData.get('image') as File;
     const validatedFields = validatedWithZodSchema(ImageSchema, { image });
     const fullPath = await uploadImage(validatedFields.image);
 
@@ -127,8 +127,8 @@ export const updateProfileImageAction = async (
       where: { clerkId: user.id },
       data: { profileImage: fullPath },
     });
-    revalidatePath("/profile");
-    return { message: "Profile image updated successfully" };
+    revalidatePath('/profile');
+    return { message: 'Profile image updated successfully' };
   } catch (error) {
     return renderError(error);
   }
@@ -141,7 +141,7 @@ export const createPropertyAction = async (
   const user = await getAuthUser();
   try {
     const rawData = Object.fromEntries(formData);
-    const file = formData.get("image") as File;
+    const file = formData.get('image') as File;
     const validatedFields = validatedWithZodSchema(propertySchema, rawData);
     const validatedFile = validatedWithZodSchema(ImageSchema, { image: file });
     const fullPath = await uploadImage(validatedFile.image);
@@ -155,11 +155,11 @@ export const createPropertyAction = async (
   } catch (error) {
     return renderError(error);
   }
-  redirect("/");
+  redirect('/');
 };
 
 export const fetchProperties = async ({
-  search = "",
+  search = '',
   category,
 }: {
   search?: string;
@@ -169,8 +169,8 @@ export const fetchProperties = async ({
     where: {
       category,
       OR: [
-        { name: { contains: search, mode: "insensitive" } },
-        { tagline: { contains: search, mode: "insensitive" } },
+        { name: { contains: search, mode: 'insensitive' } },
+        { tagline: { contains: search, mode: 'insensitive' } },
       ],
     },
     select: {
@@ -182,7 +182,7 @@ export const fetchProperties = async ({
       price: true,
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: 'asc',
     },
   });
   return properties;
@@ -230,7 +230,7 @@ export const toggleFavoriteAction = async (prevState: {
     }
     revalidatePath(pathname);
     return {
-      message: favoriteId ? "Removed from Favorites" : "Added to Favorites",
+      message: favoriteId ? 'Removed from Favorites' : 'Added to Favorites',
     };
   } catch (error) {
     return renderError(error);
@@ -291,7 +291,7 @@ export const createReviewAction = async (
       },
     });
     revalidatePath(`/properties/${validatedFields.propertyId}`);
-    return { message: "Review submitted scucessfully " };
+    return { message: 'Review submitted scucessfully ' };
   } catch (err) {
     return renderError(err);
   }
@@ -312,7 +312,7 @@ export const fetchPropertyReviews = async (propertyId: string) => {
       },
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: 'asc',
     },
   });
   return reviews;
@@ -348,15 +348,15 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
         profileId: user.id,
       },
     });
-    revalidatePath("/reviews");
-    return { message: "Review deleted successfully " };
+    revalidatePath('/reviews');
+    return { message: 'Review deleted successfully ' };
   } catch (error) {}
   return renderError(error);
 };
 
 export async function fetchPropertyRating(propertyId: string) {
   const result = await db.review.groupBy({
-    by: ["propertyId"],
+    by: ['propertyId'],
     _avg: {
       rating: true,
     },
@@ -403,7 +403,7 @@ export const createBookingAction = async (prevState: {
     where: { id: propertyId },
     select: { price: true },
   });
-  if (!property) return { message: "Property not found " };
+  if (!property) return { message: 'Property not found ' };
 
   const { orderTotal, totalNights } = calculateTotals({
     checkIn,
@@ -446,7 +446,7 @@ export const fetchBookings = async () => {
       },
     },
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
   });
   return bookings;
@@ -464,8 +464,8 @@ export async function deleteBookingAction(prevState: { bookingId: string }) {
       },
     });
 
-    revalidatePath("/bookings");
-    return { message: "Booking deleted successfully" };
+    revalidatePath('/bookings');
+    return { message: 'Booking deleted successfully' };
   } catch (error) {
     return renderError(error);
   }
@@ -495,7 +495,7 @@ export const fetchRentals = async () => {
           totalNights: true,
         },
         orderBy: {
-          createdAt: "asc",
+          createdAt: 'asc',
         },
       });
 
@@ -508,7 +508,7 @@ export const fetchRentals = async () => {
           orderTotal: true,
         },
         orderBy: {
-          createdAt: "asc",
+          createdAt: 'asc',
         },
       });
 
@@ -535,8 +535,8 @@ export async function deleteRentalAction(prevState: { propertyId: string }) {
       },
     });
 
-    revalidatePath("/rentals");
-    return { message: "Rental deleted successfully" };
+    revalidatePath('/rentals');
+    return { message: 'Rental deleted successfully' };
   } catch (error) {
     return renderError(error);
   }
@@ -558,7 +558,7 @@ export const updatePropertyAction = async (
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
-  const propertyId = formData.get("id") as string;
+  const propertyId = formData.get('id') as string;
 
   try {
     const rawData = Object.fromEntries(formData);
@@ -574,7 +574,7 @@ export const updatePropertyAction = async (
     });
 
     revalidatePath(`/rentals/${propertyId}/edit`);
-    return { message: "Updated Successfully" };
+    return { message: 'Updated Successfully' };
   } catch (error) {
     return renderError(error);
   }
@@ -585,10 +585,10 @@ export const updatePropertyImageAction = async (
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
-  const propertyId = formData.get("id") as string;
+  const propertyId = formData.get('id') as string;
 
   try {
-    const image = formData.get("image") as File;
+    const image = formData.get('image') as File;
     const validatedFields = validatedWithZodSchema(ImageSchema, { image });
     const fullPath = await uploadImage(validatedFields.image);
     await db.property.update({
@@ -601,7 +601,7 @@ export const updatePropertyImageAction = async (
       },
     });
     revalidatePath(`/rentals/${propertyId}/edit`);
-    return { message: "Property Image Updated Successful" };
+    return { message: 'Property Image Updated Successful' };
   } catch (error) {
     return renderError(error);
   }
@@ -619,7 +619,7 @@ export const fetchReservations = async () => {
     },
 
     orderBy: {
-      createdAt: "desc",
+      createdAt: 'desc',
     },
 
     include: {
@@ -668,7 +668,7 @@ export const fetchChartsData = async () => {
       },
     },
     orderBy: {
-      createdAt: "asc",
+      createdAt: 'asc',
     },
   });
 

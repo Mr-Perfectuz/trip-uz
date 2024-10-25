@@ -56,8 +56,8 @@ A personalized page showing all properties that the user has marked as favorites
 [See Favorites Component ](/app/favorites)
 
 <p align="center">
-    <a href="02-blog">
-        <img src="02-blog/screenshot.png">
+    <a href="/app/favorites/">
+       <img src="public/favorites.png">
     </a>
 </p>
 
@@ -76,8 +76,8 @@ A page displaying all of the user’s current and past bookings. Users can manag
 [See Bookings Component ](/app/bookings)
 
 <p align="center">
-    <a href="03-dashboard">
-        <img src="03-dashboard/screenshot.png">
+    <a href="/app/bookings/page.tsx">
+        <img src="public/bookings.png">
     </a>
 </p>
 
@@ -96,8 +96,8 @@ A section where users can see reviews they've given or received for properties. 
 [See Reviews Component ](/app/reviews)
 
 <p align="center">
-    <a href="04-reactmeetups">
-        <img src="04-reactmeetups/screenshot.png">
+    <a href="/app/reviews/page.tsx">
+         <img src="public/reviews.png">
     </a>
 </p>
 
@@ -116,8 +116,8 @@ A page for property owners to manage reservations made on their listed propertie
 [See Reservations Component ](/app/reservations)
 
 <p align="center">
-    <a href="05-djevents">
-        <img src="05-djevents/screenshot.png">
+    <a href="/app/reservations/page.tsx.tsx">
+         <img src="public/reservations.png">
     </a>
 </p>
 
@@ -136,8 +136,8 @@ A form-based page where property owners can add new rental properties to the pla
 [See Rentals Component ](/app/rentals)
 
 <p align="center">
-    <a href="06-devspace">
-        <img src="06-devspace/screenshot.png">
+    <a href="/app/rentals/page.tsx">
+         <img src="public/rentals.png">
     </a>
 </p>
 
@@ -157,8 +157,8 @@ A dashboard for property owners to see and manage their listed rentals. Owners c
 [See Admin Component ](/app/rentals)
 
 <p align="center">
-    <a href="07-property-pulse">
-        <img src="07-property-pulse/screenshot.png">
+    <a href="/app/rentals/create/page.tsx">
+         <img src="public/myrentals.png">
     </a>
 </p>
 
@@ -177,8 +177,8 @@ An admin page restricted to users with administrative rights. It provides access
 [See Rentals Component ](/app/admin)
 
 <p align="center">
-    <a href="06-devspace">
-        <img src="06-devspace/screenshot.png">
+    <a href="/app/admin/page.tsx">
+         <img src="public/admin.png">
     </a>
 </p>
 
@@ -197,8 +197,8 @@ A simple action to log out the current user from the application, ensuring the s
 [See Rentals Component ](/app/rentals)
 
 <p align="center">
-    <a href="06-devspace">
-        <img src="06-devspace/screenshot.png">
+    <a href="/app/profile/create/page.tsx">
+         <img src="public/login.png">
     </a>
 </p>
 
