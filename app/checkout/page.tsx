@@ -16,7 +16,6 @@ function CheckoutPage() {
   const searchParams = useSearchParams();
   const bookingId = searchParams.get("bookingId");
   const fetchClientSecret = useCallback(async () => {
-    // Create a Checkout Session
     const response = await axios.post("/api/payment", {
       bookingId: bookingId,
     });
