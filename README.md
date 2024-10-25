@@ -1,36 +1,38 @@
-# Next.js Projects
+## TRIP-UZ
 
-7 projects to understand Next.js core concepts, using MongoDB, Firebase and NextAuth.js.
+### Next App with Next.js 14+, Typescript, Clerk Auth, Prisma, Supabase, Tailwind, Shadcn-ui, Zod,Vercel and etc
 
 | #   | Project                              | Description                                                                                       |
 | --- | ------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 01  | [**NextEvents**](#nextevents)        | A social networking site using Next.js, MongoDB and Firebase.                                     |
-| 02  | [**Blog**](#blog)                    | A complete app example with a blog using Next.js, MongoDB, Markdown and React Syntax Highlighter. |
-| 03  | [**Dashboard**](#dashboard)          | A very simple dashboard to understand authentication with NextAuth.js.                            |
-| 04  | [**React Meetups**](#reactmeetups)   | Another social networking site to summarize Next.js core concepts.                                |
-| 05  | [**DJ Events**](#djevents)           | A music event website using Strapi CMS as backend.                                                |
-| 06  | [**DevSpace**](#devspace)            | Another blog using Tailwind CSS and Markdown.                                                     |
-| 07  | [**Property Pulse**](#propertypulse) | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
+| 01  | [**Home**](#home)                    | A social networking site using Next.js, MongoDB and Firebase.                                     |
+| 02  | [**Favorites**](#blog)               | A complete app example with a blog using Next.js, MongoDB, Markdown and React Syntax Highlighter. |
+| 03  | [**Bookings**](#dashboard)           | A very simple dashboard to understand authentication with NextAuth.js.                            |
+| 04  | [**Reviews**](#reactmeetups)         | Another social networking site to summarize Next.js core concepts.                                |
+| 05  | [**Reservations**](#djevents)        | A music event website using Strapi CMS as backend.                                                |
+| 06  | [**Create Rental**](#devspace)       | Another blog using Tailwind CSS and Markdown.                                                     |
+| 07  | [**My Rentals**](#propertypulse)     | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
+| 07  | [**Admin**](#propertypulse)          | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
+| 07  | [**Login/Register**](#propertypulse) | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
 
 ## Get Inspired
 
-Check out our [**collection of articles**](https://www.onbusinessplan.com/) for those beginning their web development journey. Find tips, tricks, and motivational content to keep you engaged and motivated throughout your learning process.
+Check out our [**LinkedIn Page**](https://www.linkedin.com/in/anvarbekziyodov/) for more information about web development. Find tips, tricks, and motivational content to keep you engaged and motivated throughout your learning process.
 
 ## Share Your Insights
 
-We want to hear from you! Help us tailor our content to better meet your needs by participating in our brief survey. Your feedback is invaluable in guiding us to create the most relevant and useful resources for developers and freelancers. [**Take the survey here**](https://forms.gle/sSWJ4uAcTdFJu6W76).
+If you have any questions or feedback related to this project, feel free to [**Contact Us Here**](t.me/Anvarbek_Ziyodov).
 
-## <a name="nextevents"></a> 1) NextEvents
+## <a name="home"></a> 1) Home
 
 A social networking site using Next.js, MongoDB and Firebase.
 
-[See Demo deployed on Vercel](https://nextevents.vercel.app/)
+[See Demo deployed on Vercel](https://trip-uz.vercel.app/)
 
-[See 01-nextevents folder](01-nextevents)
+[See 01-home folder](01-home)
 
 <p align="center">
-    <a href="01-nextevents">
-        <img src="01-nextevents/screenshot.png">
+    <a href="01-home">
+        <img src="public/home.png">
     </a>
 </p>
 
