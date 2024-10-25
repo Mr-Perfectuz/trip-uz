@@ -1,7 +1,7 @@
 import { Card, CardHeader } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 
-export function StatsLoadingContaiener() {
+export function StatsLoadingContainer() {
   return (
     <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3">
       <LoadingCard />
