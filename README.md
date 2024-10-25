@@ -28,7 +28,7 @@ A social networking site using Next.js, MongoDB and Firebase.
 
 [See Demo deployed on Vercel](https://trip-uz.vercel.app/)
 
-[See 01-home folder](01-home)
+[See 01-home folder](/app)
 
 <p align="center">
     <a href="01-home">
