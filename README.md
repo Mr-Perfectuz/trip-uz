@@ -2,25 +2,29 @@
 
 ### Next App with Next.js 14+, Typescript, Clerk Auth, Prisma, Supabase, Tailwind, Shadcn-ui, Zod,Vercel and etc
 
-| #   | Project                              | Description                                                                                       |
-| --- | ------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 01  | [**Home**](#home)                    | A social networking site using Next.js, MongoDB and Firebase.                                     |
-| 02  | [**Favorites**](#blog)               | A complete app example with a blog using Next.js, MongoDB, Markdown and React Syntax Highlighter. |
-| 03  | [**Bookings**](#dashboard)           | A very simple dashboard to understand authentication with NextAuth.js.                            |
-| 04  | [**Reviews**](#reactmeetups)         | Another social networking site to summarize Next.js core concepts.                                |
-| 05  | [**Reservations**](#djevents)        | A music event website using Strapi CMS as backend.                                                |
-| 06  | [**Create Rental**](#devspace)       | Another blog using Tailwind CSS and Markdown.                                                     |
-| 07  | [**My Rentals**](#propertypulse)     | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
-| 07  | [**Admin**](#propertypulse)          | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
-| 07  | [**Login/Register**](#propertypulse) | A property rental website using Tailwind CSS, MongoDB, and TypeScript.                            |
+| #   | Project                           | Description                                                                       |
+| --- | --------------------------------- | --------------------------------------------------------------------------------- |
+| 01  | [**Home**](#home)                 | The main landing page where users can browse available properties.                |
+| 02  | [**Favorites**](#favorites)       | A personalized page showing all properties that the user has marked as favorites  |
+| 03  | [**Bookings**](#bookings)         | A page displaying all of the user’s current and past bookings                     |
+| 04  | [**Reviews**](#reviews)           | A section where users can see reviews they've given or received for properties.   |
+| 05  | [**Reservations**](#reservations) | A page for property owners to manage reservations made on their listed properties |
+| 06  | [**Create Rental**](#rentals)     | A form-based page where owners can add new rental properties to the platform      |
+| 07  | [**My Rentals**](#myrentals)      | A dashboard for property owners to see and manage their listed rentals            |
+| 08  | [**Admin**](#admin)               | Platform analytics, user management, and an overview of the system’s statistics.  |
+| 09  | [**Login/Register**](#login)      | A simple action to log out the current user from the application using Clerk Auth |
 
-## Get Inspired
+## Keep in Touch
 
 Check out our [**LinkedIn Page**](https://www.linkedin.com/in/anvarbekziyodov/) for more information about web development. Find tips, tricks, and motivational content to keep you engaged and motivated throughout your learning process.
 
 ## Share Your Insights
 
 If you have any questions or feedback related to this project, feel free to [**Contact Us Here**](t.me/Anvarbek_Ziyodov).
+
+## ABOUT
+
+TRIP-UZ app uses Next.js 14+ for creating a fast and responsive user interface, combined with TypeScript for type safety. Styling is handled with TailwindCSS and Shadcn-ui for a consistent and visually appealing design. User authentication is managed through Clerk, while data storage and management are powered by Supabase and Prisma for database integration. The Zod library ensures data validation across forms, enhancing data integrity. The app supports image uploads, responsive layouts, and dynamic routing. Finally, the entire application is deployed on Vercel, providing a scalable and robust hosting environment.
 
 ## <a name="home"></a> 1) Home
 
@@ -38,28 +42,18 @@ A social networking site using Next.js, MongoDB and Firebase.
 
 ### Features
 
-- working with file-based routing and handling dynamic routes.
-- creating a general layout, adding React components and styling them with CSS modules.
-- displaying events and filtering them by date.
-- adding Static Site Generation (SSG) on the home page.
-- fetching events from Firebase and enabling page pre-rendering for dynamic pages.
-- using Server-Side Rendering (SSR) and client-side data fetching with SWR.
-- adding metadata with Head.
-- customizing the \_app.js and \_document.js files.
-- optimizing images with Image.
-- handling comments and signups for the newsletter with API routes.
-- setting up a MongoDB database and getting comments for a specific event.
-- handling errors and displaying user-friendly notifications.
-- deploying on Vercel.
+- Implemented file-based routing to define the home path.
+- Created a general layout using reusable components.
+- Displayed property listings with dynamic filters such as location, price, and amenities.
+- Used Static Site Generation (SSG) for pre-rendering data to improve performance.
+- Optimized images using Next.js Image component for better loading times.
+- Added metadata to enhance SEO using the Head component.
 
-## <a name="blog"></a> 2) Blog
+## <a name="favorites"></a> 2) Favorites
 
-A complete app example with a blog using Next.js, MongoDB, Markdown and React Syntax Highlighter.
-
-[See Demo deployed on Vercel](https://next-dagny.vercel.app/)
+A personalized page showing all properties that the user has marked as favorites. It allows quick access to preferred rentals.
 
 [See Favorites Component ](/app/favorites)
-
 
 <p align="center">
     <a href="02-blog">
@@ -69,20 +63,15 @@ A complete app example with a blog using Next.js, MongoDB, Markdown and React Sy
 
 ### Features
 
-- building the home page, creating a general layout and a reusable grid to display the latest posts.
-- reading markdown files and rendering posts as JSX with gray-matter and react-markdown.
-- displaying dynamic post pages and generating paths.
-- optimizing images from markdown with Image.
-- rendering code snippets from markdown and optimizing React Syntax Highlighter bundle size.
-- handling messages sent by users via an API route.
-- storing messages in a database with MongoDB.
-- adding metadata in Head and customizing \_document.js file.
-- using React portals to show user-friendly notifications.
-- deploying on Vercel.
+- Managed state for displaying favorite properties using client-side data fetching.
+- Added functionality to toggle favorites using API routes.
+- Implemented responsive layout to ensure compatibility across devices.
+- Used server-side filtering to retrieve the user's favorite properties.
+- Integrated local storage to persist favorite items.
 
-## <a name="dashboard"></a> 3) Dashboard
+## <a name="bookings"></a> 3) Bookings
 
-A very simple dashboard to understand authentication with NextAuth.js.
+A page displaying all of the user’s current and past bookings. Users can manage their reservations, view booking details, and cancel if needed.
 
 [See Bookings Component ](/app/bookings)
 
@@ -94,17 +83,15 @@ A very simple dashboard to understand authentication with NextAuth.js.
 
 ### Features
 
-- adding a user signup API route and sending signup requests from the frontend.
-- hashing passwords with Bcryptjs.
-- working with a custom auth provider in NextAuth.js to log in users.
-- managing active sessions and handling logouts.
-- protecting routes with client-side and server-side page guards.
-- protecting API routes.
-- enabling users to change their passwords.
+- Created a bookings dashboard to display user's past and future bookings.
+- Used Server-Side Rendering (SSR) to fetch booking details from the database.
+- Enabled booking cancellation and modification through API routes.
+- Implemented status updates to track the booking’s confirmation and cancellation.
+- Added error handling and user notifications for booking-related actions.
 
-## <a name="reactmeetups"></a> 4) React Meetups
+## <a name="reviews"></a> 4) Reviews
 
-Another social networking site to summarize Next.js core concepts.
+A section where users can see reviews they've given or received for properties. It includes functionalities for submitting new reviews and rating properties.
 
 [See Reviews Component ](/app/reviews)
 
@@ -116,19 +103,15 @@ Another social networking site to summarize Next.js core concepts.
 
 ### Features
 
-- converting a React project into a Next.js app.
-- handling server-side rendering of pages with getStaticProps and getStaticPaths.
-- connecting and querying a MongoDB Database via an API route.
-- getting data from the database for page pre-rendering.
-- working with fallback pages and revalidation to display new meetups without having to rebuild.
+- Allowed users to view and submit reviews for properties.
+- Integrated a rating system with user input validation using the Zod library.
+- Fetched and displayed reviews using client-side data fetching (SWR).
+- Added pagination for handling multiple reviews dynamically.
+- Ensured data integrity with form validation and user feedback.
 
-## <a name="djevents"></a> 5) DJ Events
+## <a name="reservations"></a> 5) Reservations
 
-A music event website using Strapi CMS as backend.
-
-[See Demo deployed on Vercel](https://next-djevents-strapi.vercel.app/)
-
-[See Strapi API deployed on Railway](https://next-projects-production.up.railway.app/events)
+A page for property owners to manage reservations made on their listed properties. Owners can view booking details, approve or decline requests, and manage booking dates.
 
 [See Reservations Component ](/app/reservations)
 
@@ -140,27 +123,15 @@ A music event website using Strapi CMS as backend.
 
 ### Features
 
-- creating a Next.js app with a custom layout.
-- handling module aliases with jsconfig.
-- fetching data with API routes, displaying events and event details.
-- setting up Strapi CMS and defining event content type.
-- hosting uploaded images on Cloudinary.
-- connecting to the Strapi API, filtering events, enabling search and pagination.
-- adding, editing and deleting event.
-- creating a slug and displaying user-friendly messages with React Toastify.
-- handling image upload with a modal using React Portal.
-- authenticating users, storing JWT token in server HttpOnly cookie.
-- registering users and creating an auth context.
-- protecting Strapi API routes and customizing user events endpoint.
-- creating a user dashboard and associating events with users.
-- guarding routes to add, edit, delete event and upload image.
-- displaying maps with MapQuest Geocoding API, Mapbox and ReactMapGL.
-- deploying Strapi backend on Railway.
-- deploying frontend on Vercel.
+- Displayed reservations for property owners, fetched using server-side data.
+- Implemented CRUD operations to manage bookings directly from the owner's dashboard.
+- Utilized protected routes to ensure only property owners access this page.
+- Set up a calendar component to visualize booking dates and availability.
+- Added support for blocking dates to prevent double bookings.
 
-## <a name="devspace"></a> 6) DevSpace
+## <a name="rentals"></a> 6) Rentals
 
-Another blog using Tailwind CSS and Markdown.
+A form-based page where property owners can add new rental properties to the platform. It includes fields for property details, photos, pricing, and amenities.
 
 [See Rentals Component ](/app/rentals)
 
@@ -172,25 +143,18 @@ Another blog using Tailwind CSS and Markdown.
 
 ### Features
 
-- setting up [Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs) with Next.js.
-- getting markdown files and parsing frontmatter with gray-matter.
-- displaying single blog posts with Marked.
-- handling pagination and creating category pages.
-- displaying a category sidebar.
-- handling searches with an API route.
+- Developed a form-based interface for property owners to create new listings.
+- Implemented image upload functionality using Supabase storage.
+- Integrated form validation with Zod to ensure correct data submission.
+- Used server actions to handle form data and store it in the database.
+- Added categories and amenities inputs to customize each rental’s details.
 - [caching posts](https://medium.com/@matswainson/building-a-search-component-for-your-next-js-markdown-blog-9e75e0e7d210) on each commit with Husky.
 
-## <a name="propertypulse"></a> 7) Property Pulse
+## <a name="myrentals"></a> 7) My Rentals
 
-A property rental website using Tailwind CSS, MongoDB, and TypeScript.
+A dashboard for property owners to see and manage their listed rentals. Owners can update property information, view booking statuses, and edit availability.
 
-[See Demo deployed on Vercel](https://property-pulse-gamma.vercel.app/)
-
-[See My Rentals Component ](/app/rentals)
-
-[See Admin Component ](/app/admin)
-
-[See Login/Register Component ](/app/profile)
+[See Admin Component ](/app/rentals)
 
 <p align="center">
     <a href="07-property-pulse">
@@ -200,40 +164,67 @@ A property rental website using Tailwind CSS, MongoDB, and TypeScript.
 
 ### Features
 
-- setting up the project with Tailwind CSS and TypeScript.
-- implementing a responsive navbar with React Icons.
-- integrating homepage components.
-- crafting a property card component to showcase available properties.
-- designing a custom 404 page and incorporating loading spinners from React Spinners.
-- establishing a MongoDB Atlas database.
-- creating an API route.
-- constructing Property and User models using Mongoose and TypeScript.
-- fetching data in a server component.
-- setting up NextAuth.js with Google OAuth.
-- handling user sessions, with the ability to sign in and out.
-- ensuring that certain routes are accessible only to authenticated users.
-- handling the property submission form.
-- implementing Cloudinary for image storage and optimization.
-- presenting user profile information and listings.
-- offering capabilities for editing and deleting listings.
-- integrating React Toastify for displaying user-friendly notifications.
-- integrating Mapbox to handle geocoding and maps.
-- implementing a bookmarking system that enables users to save their favorite properties.
-- adding social share buttons using react-share.
-- handling searches by location and property type.
-- implementing a messaging system that allows users to send, view, and manage messages, featuring message notifications.
-- managing pagination.
-- displaying images in a lightbox with react-photoswipe-gallery.
-- displaying featured properties.
+- Set up a dashboard for property owners to manage their current listings.
+- Implemented edit and delete functionalities using API routes.
+- Fetched user-specific data with server-side queries.
+- Enabled real-time updates for property availability.
+- Provided filtering options to view rentals based on booking status.
+
+## <a name="admin"></a> 8) Admin
+
+An admin page restricted to users with administrative rights. It provides access to platform analytics, user management, and an overview of the system’s statistics.
+
+[See Rentals Component ](/app/admin)
+
+<p align="center">
+    <a href="06-devspace">
+        <img src="06-devspace/screenshot.png">
+    </a>
+</p>
+
+### Features
+
+- Created a protected admin panel accessible only to authorized users.
+- Set up a statistics overview with data visualization using chart components.
+- Integrated middleware for route protection based on user roles.
+- Fetched site-wide data for review, booking, and property stats.
+- Managed user accounts and roles directly from the admin page.
+
+## <a name="login"></a> 9) Login/Register
+
+A simple action to log out the current user from the application, ensuring the session is terminated securely.
+
+[See Rentals Component ](/app/rentals)
+
+<p align="center">
+    <a href="06-devspace">
+        <img src="06-devspace/screenshot.png">
+    </a>
+</p>
+
+### Features
+
+- Allowed users to view and update their profile information.
+- Integrated Clerk for authentication and user management.
+- Enabled image uploads for profile pictures with client-side previews.
+- Used server actions to update user data in real time.
+- Included user preferences and settings management.
 
 ## Acknowledgments
 
-This repository is based on 3 courses:
+Reference for the technologies used in the application::
 
-- [Next.js & React - The Complete Guide](https://www.udemy.com/course/nextjs-react-the-complete-guide/) by Maximilian Schwarzmüller (2021)
-- [Next.js Dev to Deployment](https://www.udemy.com/course/nextjs-dev-to-deployment/) by Brad Traversy (2021)
-- [Next.js From Scratch](https://www.udemy.com/course/nextjs-from-scratch/) by Brad Traversy (2024)
+- [Next.js 14+](https://nextjs.org/) - Official Next.js documentation.
+- [TypeScript](https://www.typescriptlang.org/) - Official TypeScript website.
+- [TailwindCSS](https://tailwindcss.com/) - Official TailwindCSS documentation.
+- [Shadcn-ui](https://ui.shadcn.dev/) - Official Shadcn-ui documentation.
+- [Clerk](https://clerk.dev/) - Official Clerk authentication platform.
+- [Supabase](https://supabase.com/) - Official Supabase documentation.
+- [Prisma](https://www.prisma.io/) - Official Prisma documentation.
+- [Zod](https://zod.dev/) - Official Zod validation library.
+- [Stripe](https://stripe.com/) - Official Stripe payment platform.
+- [Vercel](https://vercel.com/) - Official Vercel deployment platform.
 
 ## Show Your Support
 
-If you find these projects helpful or interesting, please consider starring the repository. It's a simple gesture that helps to boost the visibility of the project and show appreciation for the effort put into creating it. Additionally, if you'd like to support my work further, you can [**become a sponsor**](https://github.com/sponsors/solygambas). Your support is greatly appreciated. Thank you!
+If you find these projects helpful or interesting, please consider starring the repository. It's a simple gesture that helps to boost the visibility of the project and show appreciation for the effort put into creating it.
