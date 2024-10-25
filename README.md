@@ -28,7 +28,7 @@ A social networking site using Next.js, MongoDB and Firebase.
 
 [See Demo deployed on Vercel](https://trip-uz.vercel.app/)
 
-[See 01-home folder](/app)
+[See home Component ](/app)
 
 <p align="center">
     <a href="01-home">
@@ -58,7 +58,8 @@ A complete app example with a blog using Next.js, MongoDB, Markdown and React Sy
 
 [See Demo deployed on Vercel](https://next-dagny.vercel.app/)
 
-[See 02-blog folder](02-blog)
+[See Favorites Component ](/app/favorites)
+
 
 <p align="center">
     <a href="02-blog">
@@ -83,7 +84,7 @@ A complete app example with a blog using Next.js, MongoDB, Markdown and React Sy
 
 A very simple dashboard to understand authentication with NextAuth.js.
 
-[See 03-dashboard folder](03-dashboard)
+[See Bookings Component ](/app/bookings)
 
 <p align="center">
     <a href="03-dashboard">
@@ -105,7 +106,7 @@ A very simple dashboard to understand authentication with NextAuth.js.
 
 Another social networking site to summarize Next.js core concepts.
 
-[See 04-reactmeetups folder](04-reactmeetups)
+[See Reviews Component ](/app/reviews)
 
 <p align="center">
     <a href="04-reactmeetups">
@@ -129,7 +130,7 @@ A music event website using Strapi CMS as backend.
 
 [See Strapi API deployed on Railway](https://next-projects-production.up.railway.app/events)
 
-[See 05-djevents folder](05-djevents)
+[See Reservations Component ](/app/reservations)
 
 <p align="center">
     <a href="05-djevents">
@@ -161,7 +162,7 @@ A music event website using Strapi CMS as backend.
 
 Another blog using Tailwind CSS and Markdown.
 
-[See 06-devspace folder](06-devspace)
+[See Rentals Component ](/app/rentals)
 
 <p align="center">
     <a href="06-devspace">
@@ -185,7 +186,11 @@ A property rental website using Tailwind CSS, MongoDB, and TypeScript.
 
 [See Demo deployed on Vercel](https://property-pulse-gamma.vercel.app/)
 
-[See 07-property-pulse folder](07-property-pulse)
+[See My Rentals Component ](/app/rentals)
+
+[See Admin Component ](/app/admin)
+
+[See Login/Register Component ](/app/profile)
 
 <p align="center">
     <a href="07-property-pulse">
