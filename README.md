@@ -194,6 +194,14 @@ A dashboard for property owners to see and manage their listed rentals. Owners c
     </a>
 </p>
 
+### Stripe Dashboard
+
+<p align="center">
+    <a href="/app/rentals/create/page.tsx">
+         <img src="public/stripe.png">
+    </a>
+</p>
+
 ### Features
 
 - Set up a dashboard for property owners to manage their current listings.
