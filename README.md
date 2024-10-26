@@ -61,6 +61,14 @@ A personalized page showing all properties that the user has marked as favorites
     </a>
 </p>
 
+### Favorites Schema
+
+<p align="center">
+    <a href="/app/favorites/">
+       <img src="public/favorite_supabase.png">
+    </a>
+</p>
+
 ### Features
 
 - Managed state for displaying favorite properties using client-side data fetching.
@@ -81,6 +89,14 @@ A page displaying all of the user’s current and past bookings. Users can manag
     </a>
 </p>
 
+### Booking Schema
+
+<p align="center">
+    <a href="/app/bookings/page.tsx">
+        <img src="public/booking_supabase.png">
+    </a>
+</p>
+
 ### Features
 
 - Created a bookings dashboard to display user's past and future bookings.
@@ -98,6 +114,14 @@ A section where users can see reviews they've given or received for properties. 
 <p align="center">
     <a href="/app/reviews/page.tsx">
          <img src="public/reviews.png">
+    </a>
+</p>
+
+### Reviews Schema
+
+<p align="center">
+    <a href="/app/reviews/page.tsx">
+         <img src="public/reviews_supabase.png">
     </a>
 </p>
 
@@ -162,6 +186,14 @@ A dashboard for property owners to see and manage their listed rentals. Owners c
     </a>
 </p>
 
+### Property Schema
+
+<p align="center">
+    <a href="/app/rentals/create/page.tsx">
+         <img src="public/reviews_supabase.png">
+    </a>
+</p>
+
 ### Features
 
 - Set up a dashboard for property owners to manage their current listings.
@@ -179,6 +211,14 @@ An admin page restricted to users with administrative rights. It provides access
 <p align="center">
     <a href="/app/admin/page.tsx">
          <img src="public/admin.png">
+    </a>
+</p>
+
+### Profile Schema
+
+<p align="center">
+    <a href="/app/admin/page.tsx">
+         <img src="public/profile_supabase.png">
     </a>
 </p>
 
