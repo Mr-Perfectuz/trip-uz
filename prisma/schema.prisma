@@ -2,12 +2,10 @@ datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
   directUrl         = env("DIRECT_URL")
- 
 }
 
 generator client {
   provider = "prisma-client-js"
-  
 }
 
 model Profile {
@@ -21,11 +19,12 @@ model Profile {
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
   properties Property[]
-  favorites    Favorite[]
+  favorites Favorite[]
   reviews Review[]
-  booking Booking[]
+  bookings Booking[]
+
 }
- 
+
 model Property {
   id          String     @id @default(uuid())
   name        String
@@ -44,12 +43,11 @@ model Property {
   updatedAt   DateTime   @updatedAt
   profile     Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
   profileId   String
-  favorites    Favorite[]
+  favorites Favorite[]
   reviews Review[]
-  booking Booking[]
+  bookings Booking[]
 }
 
- 
 
 model Favorite {
   id        String   @id @default(uuid())
@@ -64,6 +62,7 @@ model Favorite {
 
 }
 
+
 model Review {
   id        String   @id @default(uuid())
   profile   Profile  @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
@@ -75,7 +74,6 @@ model Review {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
 
 model Booking {
   id        String   @id @default(uuid())
