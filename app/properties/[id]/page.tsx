@@ -1,36 +1,36 @@
-import FavoriteToggleButton from "@/components/card/FavoriteToggleButton";
-import PropertyRating from "@/components/card/PropertyRating";
-import Amenities from "@/components/properties/Amenities";
-import BreadCrumbs from "@/components/properties/BreadCrumbs";
-import Description from "@/components/properties/Description";
-import ImageContainer from "@/components/properties/ImageContainer";
-import PropertyDetails from "@/components/properties/PropertyDetails";
-import ShareButton from "@/components/properties/ShareButton";
-import UserInfo from "@/components/properties/UserInfo";
-import PropertyReviews from "@/components/reviews/PropertyReviews";
-import SubmitReview from "@/components/reviews/SubmitReview";
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/ui/skeleton";
-import { fetchPropertyDetails, findExistingReview } from "@/utils/actions";
-import dynamic from "next/dynamic";
-import { redirect } from "next/navigation";
-import { auth } from "@clerk/nextjs/server";
+import FavoriteToggleButton from '@/components/card/FavoriteToggleButton';
+import PropertyRating from '@/components/card/PropertyRating';
+import Amenities from '@/components/properties/Amenities';
+import BreadCrumbs from '@/components/properties/BreadCrumbs';
+import Description from '@/components/properties/Description';
+import ImageContainer from '@/components/properties/ImageContainer';
+import PropertyDetails from '@/components/properties/PropertyDetails';
+import ShareButton from '@/components/properties/ShareButton';
+import UserInfo from '@/components/properties/UserInfo';
+import PropertyReviews from '@/components/reviews/PropertyReviews';
+import SubmitReview from '@/components/reviews/SubmitReview';
+import { Separator } from '@/components/ui/separator';
+import { Skeleton } from '@/components/ui/skeleton';
+import { fetchPropertyDetails, findExistingReview } from '@/utils/actions';
+import dynamic from 'next/dynamic';
+import { redirect } from 'next/navigation';
+import { auth } from '@clerk/nextjs/server';
 
 const DynamicMap = dynamic(
-  () => import("@/components/properties/PropertyMap"),
-  { ssr: false, loading: () => <Skeleton className="h-[400px] w-full" /> }
+  () => import('@/components/properties/PropertyMap'),
+  { ssr: false, loading: () => <Skeleton className='h-[400px] w-full' /> }
 );
 
 const DynamicBookingWrapper = dynamic(
-  () => import("@/components/booking/BookingWrapper"),
+  () => import('@/components/booking/BookingWrapper'),
   {
     ssr: false,
-    loading: () => <Skeleton className="h-[400px] w-full" />,
+    loading: () => <Skeleton className='h-[400px] w-full' />,
   }
 );
 async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   const property = await fetchPropertyDetails(params.id);
-  if (!property) redirect("/");
+  if (!property) redirect('/');
   const { baths, bedrooms, beds, guests } = property;
   const details = { baths, bedrooms, beds, guests };
   const firstName = property.profile.firstName;
@@ -43,9 +43,9 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
   return (
     <section>
       <BreadCrumbs name={property.name} />
-      <header className="flex justify-between items-center mt-4">
-        <h1 className="text-4xl font-bold capitalize">{property.tagline}</h1>
-        <div className="flex items-center gap-x-4">
+      <header className='flex justify-between items-center mt-4'>
+        <h1 className='text-4xl font-bold capitalize'>{property.tagline}</h1>
+        <div className='flex items-center gap-x-4'>
           {/* share button */}
           <ShareButton
             propertyId={property.id}
@@ -55,24 +55,24 @@ async function PropertyDetailsPage({ params }: { params: { id: string } }) {
         </div>
       </header>
       <ImageContainer mainImage={property.image} name={property.name} />
-      <section className="lg:grid lg:grid-cols-12 gap-x-12 mt-12">
-        <div className="lg:col-span-8">
-          <div className="flex gap-x-4 items-center">
-            <h1 className="text-xl font-bold">{property.name}</h1>
+      <section className='lg:grid lg:grid-cols-12 gap-x-12 mt-12'>
+        <div className='lg:col-span-8'>
+          <div className='flex gap-x-4 items-center'>
+            <h1 className='text-xl font-bold'>{property.name}</h1>
             <PropertyRating propertyId={property.id} inPage />
           </div>
           <PropertyDetails details={details} />
           <UserInfo profile={{ firstName, profileImage }} />
-          <Separator className="mt-4" />
+          <Separator className='mt-4' />
           <Description description={property.description} />
           <Amenities amenities={property.amenities} />
           <DynamicMap countryCode={property.country} />
         </div>
-        <div className="lg:col-span-4 flex flex-col items-center">
+        <div className='lg:col-span-4 flex flex-col items-center'>
           <DynamicBookingWrapper
             propertyId={property.id}
             price={property.price}
-            bookings={property.booking}
+            bookings={property.bookings}
           />
         </div>
       </section>
