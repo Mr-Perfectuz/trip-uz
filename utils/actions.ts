@@ -150,7 +150,6 @@ export const createPropertyAction = async (
   try {
     const rawData = Object.fromEntries(formData);
     const file = formData.get('image') as File;
-    console.log(rawData);
 
     const validatedFields = validateWithZodSchema(propertySchema, rawData);
     const validatedFile = validateWithZodSchema(imageSchema, { image: file });
@@ -240,7 +239,9 @@ export const toggleFavoriteAction = async (prevState: {
       });
     }
     revalidatePath(pathname);
-    return { message: favoriteId ? 'Removed from Faves' : 'Added to Faves' };
+    return {
+      message: favoriteId ? 'Removed from Favorites' : 'Added to Favorites',
+    };
   } catch (error) {
     return renderError(error);
   }
