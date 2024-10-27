@@ -20,7 +20,7 @@ Check out our [**LinkedIn Page**](https://www.linkedin.com/in/anvarbekziyodov/) 
 
 ## Share Your Insights
 
-If you have any questions or feedback related to this project, feel free to [**Contact Us Here**](t.me/Anvarbek_Ziyodov).
+If you have any questions or feedback related to this project, feel free to [**Contact Us Here**](https://t.me/Anvarbek_Ziyodov).
 
 ## ABOUT
 
