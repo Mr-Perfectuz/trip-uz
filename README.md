@@ -36,7 +36,7 @@ A social networking site using Next.js, MongoDB and Firebase.
 
 <p align="center">
     <a href="01-home">
-        <img src="public/assets/images/home.png">
+        <img src="public/home.png">
     </a>
 </p>
 
