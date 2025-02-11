@@ -28,7 +28,7 @@ TRIP-UZ app uses Next.js 14+ for creating a fast and responsive user interface, 
 
 ## <a name="home"></a> 1) Home
 
-A social networking site using Next.js, MongoDB and Firebase.
+Online travel agency made by using Next.js, MongoDB and Firebase.
 
 [See Demo deployed on Vercel](https://trip-uz.vercel.app/)
 
